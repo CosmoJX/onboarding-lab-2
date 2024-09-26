@@ -13,4 +13,14 @@ module Exercise2 (
     output logic [15:0] out
 );
 
+always@(posedge clk) begin
+  if (!nReset) begin
+    out = init;
+  end
+  else begin
+    out[15:1] = out[14:0];
+    out[0] = out[15] ^ out[13] ^ out[12] ^ out[10];
+  end
+end
+
 endmodule
